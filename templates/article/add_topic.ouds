@@ -1,0 +1,50 @@
+{% extends "member/my_zone.ouds" %}
+
+{% load i18n base read %}
+
+{% block title %} {% trans '发表文章'|capfirst %} {% endblock %}
+
+{% block body_id %}my_zone{% endblock %}
+
+{% block js %}
+	<!-- script type="text/javascript" charset="utf-8" src="/media/js/editor/ouds_editor.js"></script>
+	<script type="text/javascript">
+	    KE.show({
+	        id : 'body',
+	        skinType: 'tinymce',
+	        //cssPath : './index.css',
+	        allowFileManager : true,
+	        items : [
+	            'fullscreen', 'source', 'print', 'undo', 'redo', 'cut', 'copy', 'paste',
+	            'plainpaste', 'wordpaste', 'justifyleft', 'justifycenter', 'justifyright',
+	            'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+	            'superscript', 'emoticons', 'link', 'unlink', '-',
+	            'title', 'fontname', 'fontsize', 'textcolor', 'bgcolor', 'bold',
+	            'italic', 'underline', 'strikethrough', 'removeformat', 'selectall', 'image',
+	            'flash', 'media', 'table', 'hr', 'about'
+	        ]
+	    });
+	</script -->
+{% endblock %}
+
+{% block content_area %}
+
+<div id="content_area">
+
+	<form enctype="multipart/form-data" method="post">
+		<table align="center">
+	        <caption><h1> {% trans '发表文章' %} </h1></caption>
+			{{ topic_form }}
+	        <tr>
+	            <td></td>
+	            <td align="center">
+	                <input type="submit" value="{% trans '发表' %}" />
+	                <input type="button" value="{% trans '取消' %}" onclick="history.go(-1)" />
+	            </td>
+	        </tr>
+		</table>
+	</form>
+
+</div>
+
+{% endblock %}<!-- END #content -->

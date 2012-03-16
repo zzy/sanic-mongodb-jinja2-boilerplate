@@ -1,0 +1,23 @@
+{% extends "base.ouds" %}
+
+{% load i18n %}
+
+{% block title %} {% trans '注册成功' %} {% endblock %}
+
+{% block body_id %}register_done{% endblock %}
+
+{% block content %}
+
+<table align="center" width="50%">
+	<caption><h1>恭喜，会员身份注册成功！</h1></caption>
+	<tr>
+		<td>
+			尊敬的会员，谢谢您注册！<br/><br/>
+			现在您可以通过注册邮箱激活您的帐号，否则系统将在七天后清理您的帐号！<br/><br/>
+			谢谢！
+		</td>
+	</tr>
+</table>
+
+{% endblock %}<!-- END #matter -->
+

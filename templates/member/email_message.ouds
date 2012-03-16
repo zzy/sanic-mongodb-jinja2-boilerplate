@@ -1,0 +1,3 @@
+{% load i18n %}
+
+{% blocktrans %}ji huo you jian {{ username }} {{ expiration_days }} {{ active_time }}{% endblocktrans %}

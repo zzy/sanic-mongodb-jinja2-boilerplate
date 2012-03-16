@@ -1,0 +1,39 @@
+{% extends "base.ouds" %}
+
+{% load i18n %}
+
+{% block title %} {% trans '会员注册' %} {% endblock %}
+
+{% block body_id %}register{% endblock %}
+
+{% block content %}
+
+<table align="center" width="90%">
+    <caption><h1> {% trans '会员注册，细读条款' %} </h1></caption>
+    <tr valign="top">
+        <td width="40%">
+            <ol>
+                <li>非常感激您注册，请注意保护个人隐私。</li>
+                <li>请不要重复注册。</li>
+                <li>请勿违反当地法律。</li>
+                <li>请多反馈，有酬谢。</li>
+            </ol>
+        </td>
+        <td>
+            <form enctype="multipart/form-data" method="post">
+                <table align="center">
+		    		{{ register_form }}
+		    		<tr>
+		    			<td align="center" colspan="2">
+		        			<input type="submit" value="{% trans '已完全理解并同意以上条款，我决定注册' %}" />
+							<input type="button" value="{% trans '登录' %}" onclick="location.href='../sign_in'" />
+		    			</td>
+		    		</tr>
+				</table>
+            </form>
+        </td>
+    </tr>
+</table>
+
+{% endblock %}
+
