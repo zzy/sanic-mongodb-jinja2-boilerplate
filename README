@@ -1,2 +1,2 @@
-ChunCu is a OpenSource Content Management System (CMS) written in Python using DJango. You only need a standard web-server with Python (at least v2.4) CGI and Database(PostGreSql, MySql, MSSql) to run ChunCu. Nearly all modules can be customized.
+Ouds-cms is a OpenSource Content Management System (CMS) written in Python using DJango. You only need a standard web-server with Python (at least v2.4) CGI and Database(PostGreSql, MySql, MSSql) to run ChunCu. Nearly all modules can be customized.
 
