@@ -11,4 +11,4 @@ for i, ycbcr in enumerate(data):
     if 86 <= cb <= 117 and 140 <= cr <= 168:
         cnt += 1
 
-print '%s %s a porn image.'%(img_name, 'is' if cnt > w * h * 0.3 else 'is not')
+print('%s %s a porn image.'%(img_name, 'is' if cnt > w * h * 0.3 else 'is not'))

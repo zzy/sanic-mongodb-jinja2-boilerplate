@@ -13,7 +13,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-        (u'长弓骛之', 'ourunix@gmail.com'),
+        ('长弓骛之', 'ourunix@gmail.com'),
        )
 
 MANAGERS = ADMINS
@@ -42,10 +42,10 @@ LOCALE_PATHS = (
 )
 
 LANGUAGES = (
-    ('zh-cn', u'简体中文'),
-    ('zh-tw', u'繁體中文'),
-    ('en', u'English'),
-    ('de', u'Deutsch'),
+    ('zh-cn', '简体中文'),
+    ('zh-tw', '繁體中文'),
+    ('en', 'English'),
+    ('de', 'Deutsch'),
 #    ('fr', u'Français'),
 #    ('it', u'Italiano'),
 #    ('pt', u'Português'),
@@ -108,7 +108,7 @@ INSTALLED_APPS = (
 #===============================================================================
 
 TEMPLATE_STRING_IF_INVALID = 'DingDongQuan.com'
-HOST_NAME = u'叮咚泉营养健康'
+HOST_NAME = '叮咚泉营养健康'
 HOST_URL = 'http://DingDongQuan.com'
 
 AUTH_PROFILE_MODULE = 'member.profile'

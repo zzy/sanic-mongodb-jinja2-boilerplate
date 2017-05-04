@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 import datetime
-import urllib
+import urllib.request, urllib.parse, urllib.error
 # import webbrowser
 
 # webbrowser.open("http://whois.ename.net/dingdongquan.com", 0)
@@ -54,7 +54,7 @@ urls = [
         ]
 
 for url in urls:
-    page_url = urllib.urlopen(url)
+    page_url = urllib.request.urlopen(url)
     page_html = page_url.read()
     page_url.close()
     
@@ -71,7 +71,7 @@ for url in urls:
     f.write(page_html)
     f.close()
     
-    print str(urls.index(url) + 1) + '.', url + ' -----> has completed !'
+    print(str(urls.index(url) + 1) + '.', url + ' -----> has completed !')
     
 
 

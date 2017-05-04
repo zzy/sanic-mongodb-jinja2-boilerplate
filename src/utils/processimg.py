@@ -41,8 +41,8 @@ def watermark(img, mark_img = MARK_IMG, position = 'bottom-right', opacity = 0.6
     layer = Image.new('RGBA', img.size, (0,0,0,0))
     
     if position == 'over':
-        for y in xrange(0, img.size[1], mark.size[1]):
-            for x in xrange(0, img.size[0], mark.size[0]):
+        for y in range(0, img.size[1], mark.size[1]):
+            for x in range(0, img.size[0], mark.size[0]):
                 layer.paste(mark, (x, y))
     elif position == 'title':
         # title, but preserve the aspect ratio

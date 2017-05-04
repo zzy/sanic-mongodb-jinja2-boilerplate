@@ -20,7 +20,7 @@ class CaptchaWidget(Widget):
         '''验证码HTML内容'''
         
         attrs = self.build_attrs(attrs, name=name)
-        output = [u'<img height="60" src="/member/captcha.png" />']
-        output.append(u'<input %s style="text-transform:uppercase" />' % flatatt(attrs))
+        output = ['<img height="60" src="/member/captcha.png" />']
+        output.append('<input %s style="text-transform:uppercase" />' % flatatt(attrs))
         
-        return mark_safe(u'<br/>'.join(output))  
+        return mark_safe('<br/>'.join(output))  

@@ -15,7 +15,7 @@ import datetime
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 
-from cStringIO import StringIO
+from io import StringIO
 from random import randint, choice
 
 from PIL import Image, ImageDraw, ImageFont

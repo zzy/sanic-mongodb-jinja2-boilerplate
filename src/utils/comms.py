@@ -16,8 +16,8 @@ class SpanErrorList(ErrorList):
     def __unicode__(self):
         return self.as_spans()
     def as_spans(self):
-        if not self: return u''
-        return u'<span class="errorlist">%s</span>' % ''.join([u'<span class="error">%s</span>' % e for e in self])
+        if not self: return ''
+        return '<span class="errorlist">%s</span>' % ''.join(['<span class="error">%s</span>' % e for e in self])
 
 #===============================================================================
 # 分页字典
@@ -67,7 +67,7 @@ def _paginator_dict(objects, num_page = 1, per_page = PER_PAGE):
 
 from django.utils.hashcompat import md5_constructor
 
-def _md5_key(now, username = u'Ouds'):
+def _md5_key(now, username = 'Ouds'):
     '''由时间和帐号构造md5_key'''
     
     return md5_constructor("%s%s" % (now, username.encode('utf-8'))).hexdigest()

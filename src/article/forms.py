@@ -15,7 +15,7 @@ from ouds.article.models import Topic, Entry, Comment
 ##############################
 
 class TopicForm(forms.ModelForm):
-    tags = forms.CharField(label = _(u'标签'), max_length = 100, widget = forms.TextInput(attrs = {'size': 100}), help_text = u' * 标签间以空格分隔。')
+    tags = forms.CharField(label = _('标签'), max_length = 100, widget = forms.TextInput(attrs = {'size': 100}), help_text = ' * 标签间以空格分隔。')
     class Meta:
         model = Topic
         fields = ['title', 'icon', 'catalog', 'is_public', 'description']
@@ -27,7 +27,7 @@ class TopicForm(forms.ModelForm):
     def clean(self):    
         if 'title' in self.cleaned_data and 'catalog' in self.cleaned_data:
             if Topic.objects.filter(catalog__exact = self.cleaned_data['catalog'], title__exact = self.cleaned_data['title']):
-                raise forms.ValidationError(_(u'“' + self.cleaned_data['catalog'].name + u'”类别中此主题已经存在。'))
+                raise forms.ValidationError(_('“' + self.cleaned_data['catalog'].name + '”类别中此主题已经存在。'))
         return self.cleaned_data
     
 ############################
@@ -43,7 +43,7 @@ class EntryForm(forms.ModelForm):
         
     def clean_title(self):
         if Entry.objects.filter(topic__exact = self.instance.topic, title__exact = self.cleaned_data['title']):
-            raise forms.ValidationError(_(u'“' + self.instance.topic.title + u'”主题中此章节已经存在。'))
+            raise forms.ValidationError(_('“' + self.instance.topic.title + '”主题中此章节已经存在。'))
         return self.cleaned_data['title']
 
 ############################

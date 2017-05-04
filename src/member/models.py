@@ -55,7 +55,7 @@ class ActivationManager(models.Manager):
             try:
                 profile = self.get(active_time = active_time)
             except self.model.DoesNotExist:
-                return _(u'此激活码不存在')
+                return _('此激活码不存在')
             
             if not profile.active_time_expired():
                 user = profile.user
@@ -67,9 +67,9 @@ class ActivationManager(models.Manager):
                 
                 return profile.user
             
-            return _(u'此激活码已过期')
+            return _('此激活码已过期')
         
-        return _(u'此激活码无效')
+        return _('此激活码无效')
     
     def create_inactive_user(self, username, email, password):
         
@@ -123,27 +123,27 @@ from ouds.utils.consts import SEX, USER_AREA
 class Profile(models.Model):
     '''用户详细资料'''
     
-    user = models.OneToOneField(User, primary_key = True, verbose_name = _(u'帐号'))
-    active_time = models.CharField(_(u'有效时间'), max_length = 40)
-    is_public = models.BooleanField(_(u'信息公开'))
-    sex = models.CharField(_(u'性别'), max_length = 7, choices = SEX)
-    photo = models.ImageField(_(u'形象'), upload_to = 'imgs/member/profile', blank = True)
-    birthday = models.DateField(_(u'生日'), blank = True, null = True)
-    area = models.CharField(_(u'地域'), max_length = 2, choices = USER_AREA)
-    phone = models.CharField(_(u'电话'), max_length = 30, blank = True)
-    occupation = models.CharField(_(u'职业'), max_length = 50, blank = True)
-    website = models.URLField(_(u'网址'), verify_exists = False, blank = True)
-    description = models.TextField(_(u'描述'), blank = True)
-    recommender = models.CharField(_(u'推荐人'), max_length = 30, blank = True)
+    user = models.OneToOneField(User, primary_key = True, verbose_name = _('帐号'))
+    active_time = models.CharField(_('有效时间'), max_length = 40)
+    is_public = models.BooleanField(_('信息公开'))
+    sex = models.CharField(_('性别'), max_length = 7, choices = SEX)
+    photo = models.ImageField(_('形象'), upload_to = 'imgs/member/profile', blank = True)
+    birthday = models.DateField(_('生日'), blank = True, null = True)
+    area = models.CharField(_('地域'), max_length = 2, choices = USER_AREA)
+    phone = models.CharField(_('电话'), max_length = 30, blank = True)
+    occupation = models.CharField(_('职业'), max_length = 50, blank = True)
+    website = models.URLField(_('网址'), verify_exists = False, blank = True)
+    description = models.TextField(_('描述'), blank = True)
+    recommender = models.CharField(_('推荐人'), max_length = 30, blank = True)
 
     objects = ActivationManager()
 
     class Meta:
-        verbose_name = _(u'用户资料')
-        verbose_name_plural = _(u'用户资料')
+        verbose_name = _('用户资料')
+        verbose_name_plural = _('用户资料')
 
     def __unicode__(self):
-        return u'%s' % self.user#, _([USER_AREA[o][1] for o in xrange(USER_AREA.__len__()) if USER_AREA[o][0] == self.area][0]), self.occupation)
+        return '%s' % self.user#, _([USER_AREA[o][1] for o in xrange(USER_AREA.__len__()) if USER_AREA[o][0] == self.area][0]), self.occupation)
     
     def get_absolute_url(self):
         return "/member/%s/" % self.user

@@ -10,9 +10,9 @@
 # Description: captcha.
 #==========================================================
 
-NAME = u'captcha' 
+NAME = 'captcha' 
 
-LETTERS = u'1234567890' #ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+LETTERS = '1234567890' #ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 COLOURS = (
         (203,61,27),
@@ -27,11 +27,11 @@ COLOURS = (
        )
 
 FONTS = (
-        u'ariblk.ttf',
-        u'comic.ttf',
-        u'georgia.ttf',
-        u'impact.ttf',
-        u'tahomabd.ttf',
+        'ariblk.ttf',
+        'comic.ttf',
+        'georgia.ttf',
+        'impact.ttf',
+        'tahomabd.ttf',
        )
 
 FONT_SIZE = 12

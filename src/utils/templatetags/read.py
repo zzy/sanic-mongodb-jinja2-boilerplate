@@ -36,8 +36,8 @@ def make_tuple(key, value):
 def tuple_filter(key, tuple_name):
     '''根据键搜索元组中子元组的值'''
 
-    exec 'from ouds.utils.consts import %s as tuple_name' %tuple_name
-    for o in xrange(tuple_name.__len__()):
+    exec('from ouds.utils.consts import %s as tuple_name' %tuple_name)
+    for o in range(tuple_name.__len__()):
         if tuple_name[o][0] == key:
             return _(tuple_name[o][1])
 

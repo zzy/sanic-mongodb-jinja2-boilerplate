@@ -19,7 +19,7 @@ for file in os.listdir(dir):
     old_file = dir+'/' + file
     new_file = dir+'/' + file.replace('.tu', '.ouds')
     i += 1
-    print i, old_file, '----------->', new_file
+    print(i, old_file, '----------->', new_file)
     shutil.move(old_file, new_file)
     
 
