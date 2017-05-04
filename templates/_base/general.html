@@ -1,0 +1,27 @@
+﻿{% load i18n %}
+
+<script type="text/javascript">
+
+	function bookmark(title, url) {
+		if(document.all)
+			window.external.AddFavorite(url, title);
+		else if(window.sidebar)
+			window.sidebar.addPanel(title, url, "");
+		else
+			alert("{% trans '浏览器不支持，请编辑您的书签管理器！' %}");
+	}
+
+</script>
+
+<a href="javascript:alert('谢谢关注，本功能正在开发中……')">{% trans '试试手气' %}</a>&nbsp;&nbsp;
+<a href="javascript:bookmark('DingDongQuan.com - 叮咚泉营养健康网', 'http://DingDongQuan.com')">{% trans '收藏本站' %}</a>&nbsp;&nbsp;
+<a href="mailto:webmaster@DingDongQuan.com?subject={% trans 'hi, DingDongQuan.com' %}">{% trans '联系我们' %}</a><br />
+
+{% if profile %}
+	<a href="{{ profile.get_absolute_url }}">{{ profile.user|capfirst }}</a>
+	<a href="{{ profile.get_absolute_url }}">{% trans '我的地盘'|capfirst %}</a>
+	<a href="/member/sign_out">{% trans '签出'|capfirst %}</a>
+{% else %}
+	<a href="/member/sign_in">{% trans '签入'|capfirst %}</a>
+	<a href="/member/register">{% trans '注册'|capfirst %}</a>
+{% endif %}

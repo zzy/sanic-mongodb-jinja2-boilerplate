@@ -1,0 +1,55 @@
+{% load i18n %}
+
+{% if entry.image %}
+	<div class="hdiv">
+		<a href="{% if next_entry %}javascript:entry('{{ next_entry.id }}'){% else %}/{{ entry.topic.catalog.module }}{% endif %}">
+			<img src="/media/{{ entry.image }}" alt="{{ entry.title }}" title="{{ entry.title }}" />
+		</a>
+	</div>
+{% endif %}
+
+<h2>{{ entry.title }}</h2>
+
+<div class="ediv">
+	{{ entry.body|linebreaks }}
+</div>
+
+<script type="text/javascript">
+
+    function entry(entry_id){
+        document.getElementById("entry_id").value = entry_id;
+        document.forms["entry"].submit();
+    }
+
+</script>
+
+<form id="entry" method="post">
+    <input type="hidden" id="entry_id" name="entry_id" />
+</form>
+
+<div class="hdiv">
+	{% if previous_entry %}
+		<strong>{% trans '上一章节：' %}</strong>
+		<a href="javascript:entry('{{ previous_entry.id }}')">{{ previous_entry.title }}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	{% endif %}
+	{% if next_entry %}
+		<strong>{% trans '下一章节：' %}</strong>
+		<a href="javascript:entry('{{ next_entry.id }}')">{{ next_entry.title }}</a>
+	{% endif %}
+</div>
+
+{% if entry.topic.public_entries.count > 1 %}
+	<div class="hdiv">
+		{% for entry in entry.topic.public_entries %}
+			{% if entry.id == entry_id %}
+				<strong>{{ forloop.counter }}</strong>
+			{% else %}
+				<a class="page" href="javascript:entry('{{ entry.id }}')">{{ forloop.counter }}</a>
+			{% endif %}
+			{% if not forloop.last %}&nbsp;{% endif %}
+		{% endfor %}
+	</div>
+{% endif %}
+
+
+

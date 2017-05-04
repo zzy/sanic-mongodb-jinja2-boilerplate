@@ -1,5 +1,0 @@
-{% for site in sites %}
-    <a href="{{ site.domain }}" target="_blank">{{ site.name }}</a>
-    {% if not forloop.last %}|{% endif %}
-{% endfor %}
-

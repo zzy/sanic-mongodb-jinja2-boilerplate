@@ -1,0 +1,258 @@
+{% load i18n base %}
+
+<script type="text/javascript">
+
+	//聚焦
+	function $(id) { return document.getElementById(id); }
+
+	function load_event(func){
+		var old_onload = window.onload;
+		if (typeof window.onload != 'function') {
+			window.onload = func;
+		} else {
+			window.onload = function(){
+				old_onload();
+				func();
+			}
+		}
+	}
+	
+	function moveElement(elementID,final_x,final_y,interval) {
+	  if (!document.getElementById) return false;
+	  if (!document.getElementById(elementID)) return false;
+	  var elem = document.getElementById(elementID);
+	  if (elem.movement) {
+	    clearTimeout(elem.movement);
+	  }
+	  if (!elem.style.left) {
+	    elem.style.left = "0px";
+	  }
+	  if (!elem.style.top) {
+	    elem.style.top = "0px";
+	  }
+	  var xpos = parseInt(elem.style.left);
+	  var ypos = parseInt(elem.style.top);
+	  if (xpos == final_x && ypos == final_y) {
+			return true;
+	  }
+	  if (xpos < final_x) {
+	    var dist = Math.ceil((final_x - xpos)/10);
+	    xpos = xpos + dist;
+	  }
+	  if (xpos > final_x) {
+	    var dist = Math.ceil((xpos - final_x)/10);
+	    xpos = xpos - dist;
+	  }
+	  if (ypos < final_y) {
+	    var dist = Math.ceil((final_y - ypos)/10);
+	    ypos = ypos + dist;
+	  }
+	  if (ypos > final_y) {
+	    var dist = Math.ceil((ypos - final_y)/10);
+	    ypos = ypos - dist;
+	  }
+	  elem.style.left = xpos + "px";
+	  elem.style.top = ypos + "px";
+	  var repeat = "moveElement('"+elementID+"',"+final_x+","+final_y+","+interval+")";
+	  elem.movement = setTimeout(repeat,interval);
+	}
+	
+	function classNormal(focusBtnID,focusTxID){
+		var focusBtns= $(focusBtnID).getElementsByTagName('span');
+		var focusTxs = $(focusTxID).getElementsByTagName('span');
+		for(var i=0; i<focusBtns.length; i++) {
+			focusBtns[i].className='normal';
+			focusTxs[i].className='normal';
+		}
+	}
+	
+	function classCurrent(focusBtnID,focusTxID,n){
+		var focusBtns= $(focusBtnID).getElementsByTagName('span');
+		var focusTxs = $(focusTxID).getElementsByTagName('span');
+		focusBtns[n].className='current';
+		focusTxs[n].className='current';
+	}
+	
+	function focusChange() {
+		if(!$('focused_topics')) return false;
+		$('focused_topics').onmouseover = function(){atuokey = true};
+		$('focused_topics').onmouseout = function(){atuokey = false};
+		var focusBtns = $('focus_btn').getElementsByTagName('span');
+		var listLength = focusBtns.length;
+		focusBtns[0].onmouseover = function() {
+			moveElement('focus_pic',0,0,0);
+			classNormal('focus_btn','focus_t');
+			classCurrent('focus_btn','focus_t',0);
+		}
+		if (listLength>=2) {
+			focusBtns[1].onmouseover = function() {
+				moveElement('focus_pic',0,-300,0);
+				classNormal('focus_btn','focus_t');
+				classCurrent('focus_btn','focus_t',1);
+			}
+		}
+		if (listLength>=3) {
+			focusBtns[2].onmouseover = function() {
+				moveElement('focus_pic',0,-600,0);
+				classNormal('focus_btn','focus_t');
+				classCurrent('focus_btn','focus_t',2);
+			}
+		}
+		if (listLength>=4) {
+			focusBtns[3].onmouseover = function() {
+				moveElement('focus_pic',0,-900,0);
+				classNormal('focus_btn','focus_t');
+				classCurrent('focus_btn','focus_t',3);
+			}
+		}
+		if (listLength>=5) {
+			focusBtns[4].onmouseover = function() {
+				moveElement('focus_pic',0,-1200,0);
+				classNormal('focus_btn','focus_t');
+				classCurrent('focus_btn','focus_t',4);
+			}
+		}
+		if (listLength>=6) {
+			focusBtns[5].onmouseover = function() {
+				moveElement('focus_pic',0,-1500,0);
+				classNormal('focus_btn','focus_t');
+				classCurrent('focus_btn','focus_t',5);
+			}
+		}
+	}
+	
+	setInterval('autofocus()',5000);
+	var atuokey = false;
+	function autofocus() {
+		if(!$('focused_topics')) return false;
+		if(atuokey) return false;
+		var focusBtnList = $('focus_btn').getElementsByTagName('span');
+		var listLength = focusBtnList.length;
+		for(var i=0; i<listLength; i++) {
+			if (focusBtnList[i].className == 'current') var currentNum = i;
+		}
+		if (currentNum==0&&listLength!=1 ){
+			moveElement('focus_pic',0,-300,0);
+			classNormal('focus_btn','focus_t');
+			classCurrent('focus_btn','focus_t',1);
+		}
+		if (currentNum==1&&listLength!=2 ){
+			moveElement('focus_pic',0,-600,0);
+			classNormal('focus_btn','focus_t');
+			classCurrent('focus_btn','focus_t',2);
+		}
+		if (currentNum==2&&listLength!=3 ){
+			moveElement('focus_pic',0,-900,0);
+			classNormal('focus_btn','focus_t');
+			classCurrent('focus_btn','focus_t',3);
+		}
+		if (currentNum==3&&listLength!=4 ){
+			moveElement('focus_pic',0,-1200,0);
+			classNormal('focus_btn','focus_t');
+			classCurrent('focus_btn','focus_t',4);
+		}
+		if (currentNum==4&&listLength!=5 ){
+			moveElement('focus_pic',0,-1500,0);
+			classNormal('focus_btn','focus_t');
+			classCurrent('focus_btn','focus_t',5);
+		}
+		if (currentNum==5 ){
+			moveElement('focus_pic',0,0,0);
+			classNormal('focus_btn','focus_t');
+			classCurrent('focus_btn','focus_t',0);
+		}
+		if (currentNum==1&&listLength==2 ){
+			moveElement('focus_pic',0,0,0);
+			classNormal('focus_btn','focus_t');
+			classCurrent('focus_btn','focus_t',0);
+		}
+		if (currentNum==2&&listLength==3 ){
+			moveElement('focus_pic',0,0,0);
+			classNormal('focus_btn','focus_t');
+			classCurrent('focus_btn','focus_t',0);
+		}
+		if (currentNum==3&&listLength==4 ){
+			moveElement('focus_pic',0,0,0);
+			classNormal('focus_btn','focus_t');
+			classCurrent('focus_btn','focus_t',0);
+		}
+		if (currentNum==4&&listLength==5 ){
+			moveElement('focus_pic',0,0,0);
+			classNormal('focus_btn','focus_t');
+			classCurrent('focus_btn','focus_t',0);
+		}
+	}
+	load_event(focusChange);
+
+	//卡片
+	function g(o){
+		return document.getElementById(o);
+	}
+	
+	function hover(module, number, amount){
+		for(var i = 0; i < amount; i++){
+			g(module + "-" + i).className = "";
+			g(module + "-" + i + "-panel").style.display = "none";
+		}
+		g(module + "-" + number).className = "on";
+		g(module + "-" + number + "-panel").style.display = "block";
+	}
+	
+</script>
+
+<div id="focused_topics">
+
+	<div id="focus_pics">
+		<div id="focus_pic">
+			{% for topic in focused_topics %}
+				{% with topic.public_entries|first as entry %}
+					<span>
+						<a href="{{ entry.topic.get_absolute_url }}" target="_blank"><img src="/media/{% if entry.image %}{{ entry.image }}{% else %}imgs/ddq.jpg{% endif %}" align="middle" alt="{{ topic.title }}" title="{{ topic.title }}" /></a>
+					</span>
+				{% endwith %}
+			{% endfor %}
+		</div>
+		<div id="focus_tdiv"></div>
+		<div id="focus_t">
+			{% for topic in focused_topics %}
+				<span class="{% if forloop.counter == 1 %}current{% else %}normal{% endif %}">
+					{{ topic.title|slice:":32" }}
+				</span>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div id="focus_btn">
+			{% for topic in focused_topics %}
+				<span class="{% if forloop.counter == 1 %}current{% else %}normal{% endif %}"><a href="{{ topic.get_absolute_url }}" target="_blank"><img src="/media/{% if topic.icon %}{{ topic.icon }}{% else %}imgs/ddq_di.gif{% endif %}" align="middle" alt="{{ topic.title }}" title="{{ topic.title }}" /></a></span>
+			{% endfor %}
+	</div>
+
+	<div id="comment_topics">
+		<h3>{% trans '热力互动' %}</h3><hr />
+		{% topics '' '' '' 13 %}
+	</div>
+</div>
+
+<div id="recommended_topics">
+	{% for topic in recommended_topics %}
+		<div class="rdiv">
+			<div class="rtdiv">
+				<a class="ra" href={{ topic.get_absolute_url }} target="_blank">
+					<img src="/media/{% if topic.icon %}{{ topic.icon }}{% else %}imgs/ddq_di.gif{% endif %}" class="rimg" align="left" alt="{{ topic.title }}" title="{{ topic.title }}" />
+				</a>
+	           	[<span class="ca"><a class="ra" href={{ topic.catalog.get_absolute_url }}>{{ topic.catalog.name }}</a></span>]
+	           	<a class="ra" href={{ topic.get_absolute_url }} target="_blank">{{ topic.title|slice:":23" }}</a>
+	           	<div class="rtddiv">{{ topic.description|slice:":33" }}</div>
+           	</div>
+           	<div class="rtrdiv">
+	           	[<span class="ca"><a href={{ topic.get_previous_by_birth_date.catalog.get_absolute_url }}>{{ topic.get_previous_by_birth_date.catalog.name }}</a></span>]
+	           	<a href={{ topic.get_previous_by_birth_date.get_absolute_url }} target="_blank">{{ topic.get_previous_by_birth_date.title|slice:":19" }}</a>
+           	</div>
+           	<div class="rtrdiv">
+	           	[<span class="ca"><a href={{ topic.get_next_by_birth_date.catalog.get_absolute_url }}>{{ topic.get_next_by_birth_date.catalog.name }}</a></span>]
+	           	<a href={{ topic.get_next_by_birth_date.get_absolute_url }} target="_blank">{{ topic.get_next_by_birth_date.title|slice:":19" }}</a>
+	        </div>
+        </div>
+	{% endfor %}
+</div>
