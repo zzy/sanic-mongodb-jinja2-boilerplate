@@ -14,4 +14,4 @@ async def index(request):
     return jinja.render('index.html', request, greetings='BudsHome.com will be coming soon ...')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5555)
+    app.run(host='0.0.0.0', port=5555, debug=True)
