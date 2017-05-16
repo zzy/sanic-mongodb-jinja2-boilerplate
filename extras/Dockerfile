@@ -14,4 +14,4 @@ RUN pip install git+https://github.com/lixxu/sanic-jinja2
 # ADD / /budshome.com
 EXPOSE 5555
 WORKDIR /budshome-cms
-# CMD ["python", "dbdApp.py"]
+# CMD ["python", "dbhc.py"]
