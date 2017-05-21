@@ -1,4 +1,4 @@
-FROM daocloud.io/library/debian:jessie-slim
+FROM daocloud.io/library/ubuntu
 
 MAINTAINER budshome.com <zzy@budshome.com>
 
