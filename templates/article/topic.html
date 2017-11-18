@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% load i18n base read %}
+
+{% block keywords %}{{ catalog }}, {% trans module|tuple_filter:'MODULE' %}, {% for tag in topic.tags.all %}{{ tag.name }}, {% endfor %}{% endblock %}
+
+{% block description %}{{ topic.title }}。{{ topic.description }}{% endblock %}
+
+{% block title %}{{ topic.title }} {{ catalog }} {% trans module|tuple_filter:'MODULE' %} {% endblock %}
+
+{% block body_id %}{{ module }}{% endblock %}
+
+{% block recommend %} {% endblock %}
+
+{% block topics %}
+
+<!-- 广告预留 -->
+<script type="text/javascript">/*960*75，创建于2010-12-9*/ var cpro_id = 'u308076';</script><script src="http://cpro.baidu.com/cpro/ui/c.js" type="text/javascript"></script>
+
+	<h1>{{ topic.title }}</h1>
+	<hr/>
+    <div class="hdiv">
+		<strong>{% trans '引用地址：' %}<a href="{{ topic.get_absolute_url }}">{{ host_url }}{{ topic.get_absolute_url }}</a></strong>
+	</div>
+	
+	<div id="topic">
+
+		<fieldset>
+			<legend>
+				<strong>{% trans '作者：' %}</strong> {{ topic.profile|capfirst }}&nbsp;&nbsp;
+				<strong>{% trans '发表时间：' %}</strong> {{ topic.birth_date|date:"Y-m-d H:i:s" }}&nbsp;&nbsp;
+				<strong>{% trans '批准时间：' %}</strong> {{ topic.edit_date|date:"Y-m-d H:i:s" }}
+			</legend>
+			<div class="cdiv">
+				<strong>{% trans '版权声明：' %}</strong>本文版权属于作者，本站不负任何连带版权责任。
+			</div>
+			<div class="gdiv">
+				<img src="/media/{% if topic.icon %}{{ topic.icon }}{% else %}imgs/ddq_di.gif{% endif %}" class="timg" align="left" alt="{{ topic.title }}" title="{{ topic.title }}" />
+				{{ topic.description|linebreaksbr }}
+				<p>{% trans host_name %} {% trans module|tuple_filter:'MODULE' %} <a href="{{ host_url }}/{{ module }}">{{ host_url }}/{{ module }}</a></p>
+			</div>
+			{% if entry_id %}
+				{% entry entry_id %}
+			{% else %}
+				<strong>{% trans '作者暂未增加章节，如对本文感兴趣，请联系作者！' %}</strong>
+			{% endif %}
+		</fieldset>
+	    <div class="ndiv">
+	    	<strong>{% trans '阅读数' %}</strong>({% if topic.read_count %}{{ topic.read_count }}{% else %}1{% endif %})&nbsp;&nbsp;
+	    	<strong>{% trans '评论数' %}</strong>({{ topic.comment_count }})&nbsp;&nbsp;
+	    	<strong>{% trans '标签：' %}</strong>
+	   		{% for tag in topic.tags.all %}
+	        	<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+	        {% endfor %}
+		</div>
+		<hr/>
+		<div class="ndiv">
+			{% if previous_topic %}
+				<strong>{% trans '上一篇：' %}</strong>
+				<a href="{{ previous_topic.get_absolute_url }}">{{ previous_topic.title }}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			{% endif %}
+			{% if next_topic %}
+				<strong>{% trans '下一篇：' %}</strong>
+				<a href="{{ next_topic.get_absolute_url }}">{{ next_topic.title }}</a>
+			{% endif %}
+	    </div>
+		<div>
+			<h2>{% trans '评论列表' %}</h2>
+			{% for comment in comments %}
+				<fieldset>
+					<legend>
+						{% if comment.author %} {{ comment.author }} {% else %} {{ comment.ip }} {% endif %}
+						{% trans '评论时间：' %} {{ comment.birth_date|date:"Y-m-d H:i:s" }}
+					</legend>
+					{{ comment.body|linebreaks }}
+					<div class="ndiv">
+						{% if comment.url %}
+							{% trans 'URL:' %}
+							<strong><a href="{{ comment.url }}" target="_blank">{{ comment.url }}</a></strong>
+						{% endif %}
+					</div>
+				</fieldset>
+			{% endfor %}
+		</div>
+		<form action="/article/{{ topic.id }}/comment/" method="post">
+	        <input type="hidden" name="topic_url" value="{{ topic.get_absolute_url }}"><br />
+			<table align="center">
+				{{ comment_form }}
+				<tr><td align="center" colspan="2">
+					<input type="submit" value="评论" class="button" />&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="button" value="返回" onclick="history.go(-1)" class="button" />
+				</td></tr>
+			</table>
+		</form>
+
+	</div>
+	
+<script type="text/javascript">
+
+	//卡片
+	function g(o){
+		return document.getElementById(o);
+	}
+	
+	function hover(module, number, amount){
+		for(var i = 0; i < amount; i++){
+			g(module + "-" + i).className = "";
+			g(module + "-" + i + "-panel").style.display = "none";
+		}
+		g(module + "-" + number).className = "on";
+		g(module + "-" + number + "-panel").style.display = "block";
+	}
+	
+</script>
+	
+	<div id="trelation">
+		{% topics module '' '' 50 0 1 %}
+	</div>
+{% endblock %}
+

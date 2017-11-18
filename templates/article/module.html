@@ -1,0 +1,14 @@
+{% extends "home.html" %}
+
+{% load i18n base read %}
+
+{% block keywords %}{% trans module|tuple_filter:'MODULE' %}, {% endblock %}
+
+{% block title %} {% trans module|tuple_filter:'MODULE' %} {% endblock %}
+
+{% block body_id %}{{ module }}{% endblock %}
+
+{% block topics %}
+	<hr />
+	{% topics module catalog tag 100 0 %}
+{% endblock %}

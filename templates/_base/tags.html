@@ -1,0 +1,6 @@
+{% load read %}
+
+{% for tag in tags %}
+	<a {% if forloop.counter <= 30 or tag.read_count|multiply:0.01 >= tag.post_count %}class="ra"{% endif %} href="{{ tag.get_absolute_url }}" target="_blank">{{ tag.name }}</a>
+	{% if not forloop.last %}&nbsp;{% endif %}
+{% endfor %}
