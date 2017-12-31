@@ -10,14 +10,14 @@ from budshome.databases import motor_obj
 user_bp = Blueprint('user/v1', url_prefix='user')
 
 @user_bp.listener('after_server_start')
-async def notify_server_started(books_bp, loop):
+async def notify_server_started(sites_bp, loop):
     global mongo_obj
     mongo_obj = motor_obj.db
     
     print(u'\nbooks_bp successfully installed \n')
 
 @user_bp.listener('before_server_stop')
-async def notify_server_stopping(books_bp, loop):
+async def notify_server_stopping(sites_bp, loop):
     mongo_obj = None
     del mongo_obj
     
