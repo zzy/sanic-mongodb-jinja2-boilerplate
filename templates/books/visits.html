@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}小说阅读榜单{% endblock %}
+{% block style %}<link href="/static/css/search.css" rel="stylesheet">{% endblock %}
+
+{% block container %}
+<div class="container">
+	{% include "books/seek-form.html" %}
+	
+	<div class="list-group">
+		<h5 class="list-group-item list-group-item-info">
+			大家最爱读
+			<a class="float-right small" href="/books/search">更多 &raquo;</a>
+		</h5>
+		{% for book in books_visits %}
+			<a href="/books/{{ book._id }}" class="list-group-item list-group-item-action">{{ book.title }}
+				<span class="badge badge-pill {% if loop.index == 1 %}badge-danger
+																			{% elif loop.index == 2 %}badge-warning
+																			{% elif loop.index == 3 %}badge-success
+																			{% else %}badge-info
+																			{% endif %} float-right small">{{ book.searches }}</span>
+			</a>
+		{% endfor %}
+	</div>
+	
+</div>
+{% endblock %}

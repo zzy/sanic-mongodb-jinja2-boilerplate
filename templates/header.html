@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+	<a class="navbar-brand" href="/"><img src="/static/imgs/gaiding.png" alt="盖顶书苑 - gaiding.com" title="盖顶书苑 - gaiding.com"></a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarCollapse">
+		<ul class="navbar-nav mr-auto">
+	    	<li class="nav-item{% if '/' == active_page %} active{% endif %}">
+	      		<a class="nav-link" href="/">首页{% if '/' == active_page %}<span class="sr-only">(current)</span>{% endif %}</a>
+	    	</li>
+	    	<li class="nav-item{% if '/books/original' == active_page %} active{% endif %}">
+	      		<a class="nav-link" href="/books/original">原创榜{% if '/books/original' == active_page %}<span class="sr-only">(current)</span>{% endif %}</a>
+			</li>
+	    	<li class="nav-item{% if '/books/stars' == active_page %} active{% endif %}">
+	      		<a class="nav-link" href="/books/stars">大家爱推荐{% if '/books/stars' == active_page %}<span class="sr-only">(current)</span>{% endif %}</a>
+	    	</li>
+	    	<li class="nav-item{% if '/books/search' == active_page %} active{% endif %}">
+	    		<a class="nav-link" href="/books/search">大家都在搜{% if '/books/search' == active_page %}<span class="sr-only">(current)</span>{% endif %}</a>
+	    	</li>
+	    	<li class="nav-item{% if '/books/visits' == active_page %} active{% endif %}">
+	      		<a class="nav-link" href="/books/visits">大家最爱读{% if '/books/visits' == active_page %}<span class="sr-only">(current)</span>{% endif %}</a>
+			</li>
+	    	<li class="nav-item{% if '/books/children' == active_page %} active{% endif %}">
+	      		<a class="nav-link" href="/books/children">少儿书屋{% if '/books/children' == active_page %}<span class="sr-only">(current)</span>{% endif %}</a>
+	    	</li>
+	    	<li class="nav-item{% if '/books/lady' == active_page %} active{% endif %}">
+	      		<a class="nav-link" href="/books/lady">女士书屋{% if '/books/lady' == active_page %}<span class="sr-only">(current)</span>{% endif %}</a>
+	    	</li>
+	    	<li class="nav-item{% if '/books/man' == active_page %} active{% endif %}">
+	      		<a class="nav-link" href="/books/man">男士书屋{% if '/books/man' == active_page %}<span class="sr-only">(current)</span>{% endif %}</a>
+	    	</li>
+	    	<li class="nav-item">
+	      		<a class="nav-link" href="#" data-toggle="modal" data-target="#sign-in" data-backdrop="static" data-keyboard="false">签入</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#" data-toggle="modal" data-target="#register" data-backdrop="static" data-keyboard="false">注册</a>
+			</li>
+	    </ul>
+	</div>
+</nav>
