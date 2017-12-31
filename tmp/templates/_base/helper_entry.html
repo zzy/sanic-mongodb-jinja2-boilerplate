@@ -1,6 +1,0 @@
-{% load i18n %}
-
-{% for helper_entry in helper_entries %}
-    <a href="/member/helper/{{ helper_catalog.slug }}/{{ language }}/{{ helper_entry.slug }}">{% trans helper_entry.name %}</a>
-{% endfor %}
-
