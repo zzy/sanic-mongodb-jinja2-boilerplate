@@ -8,12 +8,12 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 # sys.path.append(os.path.dirname(os.getcwd()))
 # sys.path.append(os.getcwd())
 
-APP_NAME = u'gaiding.com'
+APP_NAME = u'budshome.com'
 HOST = ['192.168.252.4:5555', '0.0.0.0:5555']
 TIMEZONE = 'Asia/Chengdu'
 
-gaiding = Sanic(APP_NAME)
-gaiding.static('/static', './static')
+BH = Sanic(APP_NAME)
+BH.static('/static', './static')
 # session_interface = InMemorySessionInterface()
 
 # jinjia2 start
@@ -31,7 +31,7 @@ def page(tpl, **kwargs):
 MONGODB = dict(
     HOST='192.168.252.4',
     PORT='',
-    DATABASE='gaiding',
+    DATABASE='budshome',
     USERNAME='',
     PASSWORD=''
 )
