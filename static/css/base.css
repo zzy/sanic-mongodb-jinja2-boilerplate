@@ -1,0 +1,19 @@
+@charset "UTF-8"; /** 
+base style of site 盖顶书苑 - gaiding.com by ZZY.
+Copyright (c) 2017 盖顶书苑 - gaiding.com. Please don't steal.
+*/
+
+body {
+	background: #FDFDFD url(/static/imgs/bg.gif);
+}
+
+body > .container {
+	padding-top: 4.5rem;
+	font: 14px/1.2em Georgia;
+}
+
+footer {
+	font: 14px/1.2em Georgia;
+	background-color: #f5f5f5;
+	padding-bottom: 1.5rem;
+}
