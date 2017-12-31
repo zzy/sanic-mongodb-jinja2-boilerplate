@@ -7,9 +7,9 @@ from sanic.exceptions import NotFound, ServerError
 from budshome.settings import BH, page
 from budshome.databases import motor_obj
 
-from budshome.views import books_bp, user_bp, admin_bp
+from budshome.views import sites_bp, user_bp, admin_bp
 
-BH.blueprint(books_bp)
+BH.blueprint(sites_bp)
 BH.blueprint(user_bp)
 BH.blueprint(admin_bp)
 
@@ -37,22 +37,6 @@ async def home(request):
     books_stars = await mongo_obj.books.find({}, {'title':1, 'stars':1}).sort([('stars', -1)]).to_list(length=10)
     books_searches = await mongo_obj.books.find({}, {'title':1, 'searches':1}).sort([('searches', -1)]).to_list(length=10)
     books_visits = await mongo_obj.books.find({}, {'title':1, 'visits':1}).sort([('visits', -1)]).to_list(length=10)
-    
-    # print("request-"+str(request))
-    # print("request.url-"+str(request.url))
-    # print("request.args-"+str(request.args))
-    # print("request.json-"+str(request.json))
-    # print("request.raw_args-"+str(request.raw_args))
-    # print("request.files-"+str(request.files))
-    # print("request.form-"+str(request.form))
-    # print("request.body-"+str(request.body))
-    # print("request.ip-"+str(request.ip))
-    # print("request.app-"+str(request.app))
-    # print("request.scheme-"+str(request.scheme))
-    # print("request.host-"+str(request.host))
-    # print("request.path-"+str(request.path))
-    # print("request.query_string-"+str(request.query_string))
-    # print("request.uri_template-"+str(request.uri_template))
     
     return page('home.html',
                 active_page = "/",
