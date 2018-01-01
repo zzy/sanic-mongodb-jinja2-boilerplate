@@ -1,4 +1,4 @@
 git+https://github.com/channelcat/sanic
 git+https://github.com/pallets/jinja
 git+https://github.com/mongodb/motor
-
+selenium
