@@ -5,61 +5,61 @@
 
 {% block container %}
 <div class="container">
-	{% include "books/seek-form.html" %}
-	
-	<div class="row">
-	  <div class="col-md-4">
-			<div class="list-group">
-				<h5 class="list-group-item list-group-item-info">
-					大家爱推荐
-					<a class="float-right small" href="/books/stars">更多 &raquo;</a>
-				</h5>
-				{% for book in books_stars %}
-					<a href="/books/{{ book._id }}" class="list-group-item list-group-item-action">{{ book.title }}
-						<span class="badge {% if loop.index == 1 %}badge-danger
-									{% elif loop.index == 2 %}badge-warning
-									{% elif loop.index == 3 %}badge-success
-									{% else %}badge-info
-									{% endif %} float-right">{{ book.stars }}</span>
-					</a>
-				{% endfor %}
-			</div>
-	  </div>
-	  <div class="col-md-4">
-			<div class="list-group">
-				<h5 class="list-group-item list-group-item-info">
-					大家都在搜
-					<a class="float-right small" href="/books/search">更多 &raquo;</a>
-				</h5>
-				{% for book in books_searches %}
-					<a href="/books/{{ book._id }}" class="list-group-item list-group-item-action">{{ book.title }}
-						<span class="badge {% if loop.index == 1 %}badge-danger
-									{% elif loop.index == 2 %}badge-warning
-									{% elif loop.index == 3 %}badge-success
-									{% else %}badge-info
-									{% endif %} float-right">{{ book.searches }}</span>
-					</a>
-				{% endfor %}
-			</div>
-	  </div>
-	  <div class="col-md-4">
-			<div class="list-group">
-				<h5 class="list-group-item list-group-item-info">
-					大家最爱读
-					<a class="float-right small" href="/books/visits">更多 &raquo;</a>
-				</h5>
-				{% for book in books_visits %}
-					<a href="/books/{{ book._id }}" class="list-group-item list-group-item-action">{{ book.title }}
-						<span class="badge {% if loop.index == 1 %}badge-danger
-									{% elif loop.index == 2 %}badge-warning
-									{% elif loop.index == 3 %}badge-success
-									{% else %}badge-info
-									{% endif %} float-right">{{ book.visits }}</span>
-					</a>
-				{% endfor %}
-			</div>
-	  </div>
-	</div>
+    {% include "books/seek-form.html" %}
+    
+    <div class="row">
+      <div class="col-md-4">
+            <div class="list-group">
+                <h5 class="list-group-item list-group-item-info">
+                    大家爱推荐
+                    <a class="float-right small" href="/books/stars">更多 &raquo;</a>
+                </h5>
+                {% for book in books_stars %}
+                    <a href="/books/{{ book._id }}" class="list-group-item list-group-item-action">{{ book.title }}
+                        <span class="badge {% if loop.index == 1 %}badge-danger
+                                    {% elif loop.index == 2 %}badge-warning
+                                    {% elif loop.index == 3 %}badge-success
+                                    {% else %}badge-info
+                                    {% endif %} float-right">{{ book.stars }}</span>
+                    </a>
+                {% endfor %}
+            </div>
+      </div>
+      <div class="col-md-4">
+            <div class="list-group">
+                <h5 class="list-group-item list-group-item-info">
+                    大家都在搜
+                    <a class="float-right small" href="/books/search">更多 &raquo;</a>
+                </h5>
+                {% for book in books_searches %}
+                    <a href="/books/{{ book._id }}" class="list-group-item list-group-item-action">{{ book.title }}
+                        <span class="badge {% if loop.index == 1 %}badge-danger
+                                    {% elif loop.index == 2 %}badge-warning
+                                    {% elif loop.index == 3 %}badge-success
+                                    {% else %}badge-info
+                                    {% endif %} float-right">{{ book.searches }}</span>
+                    </a>
+                {% endfor %}
+            </div>
+      </div>
+      <div class="col-md-4">
+            <div class="list-group">
+                <h5 class="list-group-item list-group-item-info">
+                    大家最爱读
+                    <a class="float-right small" href="/books/visits">更多 &raquo;</a>
+                </h5>
+                {% for book in books_visits %}
+                    <a href="/books/{{ book._id }}" class="list-group-item list-group-item-action">{{ book.title }}
+                        <span class="badge {% if loop.index == 1 %}badge-danger
+                                    {% elif loop.index == 2 %}badge-warning
+                                    {% elif loop.index == 3 %}badge-success
+                                    {% else %}badge-info
+                                    {% endif %} float-right">{{ book.visits }}</span>
+                    </a>
+                {% endfor %}
+            </div>
+      </div>
+    </div>
 
 </div>
 {% endblock %}
