@@ -37,12 +37,6 @@ MONGODB = dict(
 )
 # mongodb end
 
-# 搜索引擎检索优先级
-ENGINE_PRIORITY = {
-    'chinese': ['baidu', '360', 'sogou'],
-    'non-chinese': ['google', 'bing', 'yahoo']
-}
-
 
 
 
