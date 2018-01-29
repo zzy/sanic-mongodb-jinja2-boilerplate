@@ -4,7 +4,7 @@
 from sanic import Blueprint
 from sanic.response import redirect
 
-from budshome.settings import page, ENGINE_PRIORITY
+from budshome.settings import page 
 from budshome.utils import chinese_contain_check
 from budshome.databases import motor_obj
 
