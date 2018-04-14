@@ -2,15 +2,3 @@ git+https://github.com/channelcat/sanic
 git+https://github.com/mongodb/motor
 jinja2
 selenium
-
-# extends
-pyspark
-numpy
-scipy
-matplotlib
-ipython
-pandas
-sympy
-nose
-scikit-learn
-scikit-image
