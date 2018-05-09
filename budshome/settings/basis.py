@@ -9,7 +9,7 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 # sys.path.append(os.getcwd())
 
 APP_NAME = u'budshome.com'
-HOST = ['192.168.252.4:5555', '0.0.0.0:5555']
+HOST = ['localhost:5555', '0.0.0.0:5555']
 TIMEZONE = 'Asia/Chengdu'
 
 BH = Sanic(APP_NAME)
@@ -29,7 +29,7 @@ def page(tpl, **kwargs):
 
 # mongodb start
 MONGODB = dict(
-    HOST='192.168.252.4',
+    HOST='172.17.0.2',
     PORT='',
     DATABASE='budshome',
     USERNAME='',
