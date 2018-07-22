@@ -18,11 +18,11 @@ async def before_server_start(BH, loop):
     global mongo_obj
     mongo_obj = motor_obj.db
     
-    print('\n' + BH.name + u' server is starting \n')
+    print('\n' + BH.name + ' server is starting \n')
 
 @BH.listener('after_server_start')
 async def notify_server_started(BH, loop):
-    print('\n' + BH.name + u' server successfully started \n')
+    print('\n' + BH.name + ' server successfully started \n')
 
 # @BH.middleware('request')
 # async def init_session(request):
@@ -76,7 +76,7 @@ async def e500(request, exception):
 
 @BH.listener('before_server_stop')
 async def notify_server_stopping(BH, loop):
-    print('\n' + BH.name + u' server will be stopped \n')
+    print('\n' + BH.name + ' server will be stopped \n')
 
 @BH.listener('after_server_stop')
 async def after_server_stop(BH, loop):
@@ -86,7 +86,7 @@ async def after_server_stop(BH, loop):
     motor_obj.close
     print('\nClose mongodb client ... \n')
     
-    print('\n' + BH.name + u' server successfully stopped \n')
+    print('\n' + BH.name + ' server successfully stopped \n')
 
 async def handle_exception(request, exception):
     print("\n" + str(exception.status_code) + ": " + request.url + "-" + str(exception) + "\n")

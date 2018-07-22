@@ -13,7 +13,7 @@ async def notify_server_started(admin_bp, loop):
     global mongo_obj
     mongo_obj = motor_obj.db
     
-    print(u'\nadmin_bp successfully installed \n')
+    print('\nadmin_bp successfully installed \n')
 
 @admin_bp.listener('before_server_stop')
 async def notify_server_stopping(admin_bp, loop):

@@ -6,7 +6,7 @@ class Singleton:
     
     def __new__(cls, *args, **kwd):
         if Singleton.__instance is None:
-            print(u'Create MotorObj instance')
+            print('Create MotorObj instance')
             Singleton.__instance = object.__new__(cls, *args, **kwd)
             
         return Singleton.__instance
@@ -15,7 +15,7 @@ class Singleton:
     @staticmethod
     def destroy(self):
         Singleton.__instance = None
-        print(u'destroy MotorObj instance')
+        print('destroy MotorObj instance')
         
     @property
     def test(self):

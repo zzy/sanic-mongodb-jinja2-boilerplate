@@ -8,7 +8,7 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 # sys.path.append(os.path.dirname(os.getcwd()))
 # sys.path.append(os.getcwd())
 
-APP_NAME = u'budshome.com'
+APP_NAME = 'budshome.com'
 HOST = ['localhost:5555', '0.0.0.0:5555']
 TIMEZONE = 'Asia/Chengdu'
 

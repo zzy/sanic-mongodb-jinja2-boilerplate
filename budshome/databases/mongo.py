@@ -14,9 +14,9 @@ class MotorObj:
     def __new__(cls, *args, **kwd):
         if MotorObj.__instance is None:
             MotorObj.__instance = object.__new__(cls, *args, **kwd)
-            print(u'\nCreate MotorObj instance ' + str(id(MotorObj.__instance)) + '\n')
+            print('\nCreate MotorObj instance ' + str(id(MotorObj.__instance)) + '\n')
         else:
-            print(u'\nMotorObj instance is exists ' + str(id(MotorObj.__instance)) + '\n')
+            print('\nMotorObj instance is exists ' + str(id(MotorObj.__instance)) + '\n')
             
         return MotorObj.__instance
     
@@ -36,7 +36,7 @@ class MotorObj:
                                     port = self.port)
         
         motor_client = AsyncIOMotorClient(self.mongo_uri)
-        print(u'\nCreate AsyncIOMotorClient for ' + self.mongo_uri + ' ' + str(id(motor_client)))
+        print('\nCreate AsyncIOMotorClient for ' + self.mongo_uri + ' ' + str(id(motor_client)))
         
         self.__client = motor_client
         
@@ -49,16 +49,16 @@ class MotorObj:
     def db(self):
         if self.__db is None:
             self.__db = self.client()[self.database]
-            print(u'Connected to database: ' + self.database + ', create motor_client ' + str(id(self.__db)) + '\n')
+            print('Connected to database: ' + self.database + ', create motor_client ' + str(id(self.__db)) + '\n')
         else:
-            print(u'Already connected to database: ' + self.database + ', use existing motor_client ' + str(id(self.__db)) + '\n')
+            print('Already connected to database: ' + self.database + ', use existing motor_client ' + str(id(self.__db)) + '\n')
             
         return self.__db
 
     @property
     def close(self):
         self.__client.close()
-        print(u'close motor client : ' + str(id(self.__client)) + '\n')
+        print('close motor client : ' + str(id(self.__client)) + '\n')
 
 
     

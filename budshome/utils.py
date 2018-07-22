@@ -3,7 +3,7 @@
 
 def chinese_contain_check(check_str):
     for character in check_str:
-        if u'\u4e00' <= character <= u'\u9fff':
+        if '\u4e00' <= character <= '\u9fff':
             return True
         return False
     
