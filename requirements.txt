@@ -1,4 +1,4 @@
-git+https://github.com/channelcat/sanic
+sanic
 motor
 jinja2
 selenium
