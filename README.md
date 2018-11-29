@@ -1,5 +1,5 @@
 # BudsHome
 
-sanic + mongodb + jinja2 + docker, a basic example.
+sanic + mongodb + jinja2 + bootstrap4 + docker, a basic example.
 
 
